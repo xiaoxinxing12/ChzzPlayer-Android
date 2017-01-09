@@ -25,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.chzz.player.R;
 import org.chzz.player.adapter.StreamSelectAdapter;
@@ -307,7 +308,7 @@ public class PlayerView {
      */
     private static final int MESSAGE_RESTART_PLAY = 5;
 
-
+    private String playUrl;
     /**
      * 消息处理
      */
@@ -394,6 +395,11 @@ public class PlayerView {
                 /**视频全屏切换*/
                 toggleFullScreen();
             } else if (v.getId() == R.id.app_video_play || v.getId() == R.id.play_icon) {
+                if(null==playUrl){
+                    Toast.makeText(mContext,"暂无视频",Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 /**视频播放和暂停*/
                 if (videoView.isPlaying()) {
                     if (isLive) {
@@ -496,6 +502,7 @@ public class PlayerView {
             brightness = -1;
         }
     };
+
 
 
     public void setBrightness(int value) {
@@ -968,6 +975,7 @@ public class PlayerView {
      * 带流名称
      */
     public PlayerView setPlaySource(String stream, String url) {
+        playUrl =url;
         VideoijkBean mVideoijkBean = new VideoijkBean();
         mVideoijkBean.setStream(stream);
         mVideoijkBean.setUrl(url);
@@ -997,6 +1005,10 @@ public class PlayerView {
      * 开始播放
      */
     public PlayerView startPlay() {
+        if(null==currentUrl){
+            showStatus(mActivity.getResources().getString(null==playUrl?R.string.not_url:R.string.small_problem));
+            return this;
+        }
         if (isLive) {
             videoView.setVideoPath(currentUrl);
             videoView.seekTo(0);
@@ -1604,7 +1616,7 @@ public class PlayerView {
                     if (isLive) {
                         showStatus("获取不到直播源");
                     } else {
-                        showStatus(mActivity.getResources().getString(R.string.small_problem));
+                        showStatus(mActivity.getResources().getString(null==playUrl?R.string.not_url:R.string.small_problem));
                     }
                     /**5秒尝试重连*/
                     if (!isErrorStop && isAutoReConnect) {
@@ -1805,7 +1817,7 @@ public class PlayerView {
         if (isCharge && maxPlaytime + 1000 < getCurrentPosition()) {
             query.id(R.id.app_video_freeTie).visible();
             pausePlay();
-        } else if (position > duration + 1500) {
+        } else if (position > duration + 1500&&!isLive) {
             pausePlay();
             statusChange(PlayStateParams.STATE_COMPLETED);
         } else {

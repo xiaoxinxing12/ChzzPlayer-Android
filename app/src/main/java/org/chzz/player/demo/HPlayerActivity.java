@@ -80,7 +80,7 @@ public class HPlayerActivity extends AppCompatActivity {
         list = new ArrayList<VideoijkBean>();
         //有部分视频加载有问题，这个视频是有声音显示不出图像的，没有解决http://fzkt-biz.oss-cn-hangzhou.aliyuncs.com/vedio/2f58be65f43946c588ce43ea08491515.mp4
         //这里模拟一个本地视频的播放，视频需要将testvideo文件夹的视频放到安卓设备的内置sd卡根目录中
-        String url2 = "http://192.168.1.90:9090/46/2017/01/05/46-4926.m3u8";
+        String url2 = "rtmp://192.168.1.90:1935/live/50";
         //String url2 = "http://192.168.1.90:9090/47/2017/01/05/47-4933.m3u8";
         player = new PlayerView(this, rootView)
                 .setTitle("什么")
@@ -104,7 +104,7 @@ public class HPlayerActivity extends AppCompatActivity {
                 })
                 .setPlaySource(url2)
                 .startPlay();
-        mHandler.sendEmptyMessageDelayed(1, 5000);
+      //  mHandler.sendEmptyMessageDelayed(1, 5000);
     }
 
 

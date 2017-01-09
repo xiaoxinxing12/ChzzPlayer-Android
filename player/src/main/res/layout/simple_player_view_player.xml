@@ -168,7 +168,7 @@
         android:background="#80000000"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="invisible">
 
         <LinearLayout
             android:id="@+id/simple_player_volume_controller_container"
