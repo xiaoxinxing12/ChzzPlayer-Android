@@ -1289,7 +1289,7 @@ public class PlayerView {
      * 隐藏分辨率按钮，true隐藏，false为显示
      */
     public PlayerView hideSteam(boolean isHide) {
-        // tv_steam.setVisibility(isHide ? View.GONE : View.VISIBLE);
+         tv_steam.setVisibility(isHide ? View.GONE : View.VISIBLE);
         return this;
     }
 
