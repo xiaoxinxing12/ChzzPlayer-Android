@@ -34,7 +34,7 @@ public class PlayerLiveActivity extends Activity {
     private Context mContext;
     private View rootView;
     private List<LiveBean> list;
-    private String url = "rtmp://192.168.1.90:1935/live/46";
+    private String url = "http://live.yiyo.net.cn/hxsrts/milinno1.flv";
     private String title = "标题";
     private PowerManager.WakeLock wakeLock;
     private Handler mHandler = new Handler() {

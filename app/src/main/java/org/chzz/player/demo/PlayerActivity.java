@@ -33,7 +33,7 @@ public class PlayerActivity extends Activity {
         this.mContext = this;
         rootView = getLayoutInflater().from(this).inflate(R.layout.simple_player_view_player, null);
         setContentView(rootView);
-        String url = "rtmp://192.168.1.90:1935/live/46";
+        String url = "http://live.yiyo.net.cn/hxsrts/milinno1.flv";
         player = new PlayerView(this, rootView)
                 .setTitle("什么")
                 .setScaleType(PlayStateParams.fitparent)
