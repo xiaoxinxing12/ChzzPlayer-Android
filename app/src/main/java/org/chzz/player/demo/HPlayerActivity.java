@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -84,6 +85,7 @@ public class HPlayerActivity extends AppCompatActivity {
                 .setTitle("什么")
                 .setScaleType(PlayStateParams.fillparent)
                 .forbidTouch(false)
+                .hideFullscreen(true)
                 .hideSteam(true)
                 //.setChargeTie(true,1)
                 .hideHideTopBar(true)
@@ -103,6 +105,12 @@ public class HPlayerActivity extends AppCompatActivity {
                 .setPlaySource(url2)
                 .startPlay();
         mHandler.sendEmptyMessageDelayed(1, 20000);
+        player.getFullScreen1View().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(HPlayerActivity.this,"1",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

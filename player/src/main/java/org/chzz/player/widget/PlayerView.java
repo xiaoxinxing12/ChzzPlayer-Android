@@ -107,6 +107,7 @@ public class PlayerView {
      * 视频全屏按钮
      */
     private final ImageView iv_fullscreen;
+    private final ImageView iv_fullscreen1;
     /**
      * 菜单面板
      */
@@ -557,7 +558,6 @@ public class PlayerView {
         }
     };
 
-
     /**
      * ========================================视频的监听方法==============================================
      */
@@ -568,6 +568,7 @@ public class PlayerView {
     public PlayerView(Activity activity) {
         this(activity, null);
     }
+
 
     /**
      * 新的调用方法，适用非Activity中使用PlayerView，例如fragment、holder中使用
@@ -639,6 +640,7 @@ public class PlayerView {
             iv_player = (ImageView) mActivity.findViewById(R.id.play_icon);
             iv_rotation = (ImageView) mActivity.findViewById(R.id.ijk_iv_rotation);
             iv_fullscreen = (ImageView) mActivity.findViewById(R.id.app_video_fullscreen);
+            iv_fullscreen1 = (ImageView) rootView.findViewById(R.id.app_video_fullscreen1);
             tv_steam = (TextView) mActivity.findViewById(R.id.app_video_stream);
             tv_speed = (TextView) mActivity.findViewById(R.id.app_video_speed);
             seekBar = (SeekBar) mActivity.findViewById(R.id.app_video_seekBar);
@@ -654,6 +656,7 @@ public class PlayerView {
             iv_player = (ImageView) rootView.findViewById(R.id.play_icon);
             iv_rotation = (ImageView) rootView.findViewById(R.id.ijk_iv_rotation);
             iv_fullscreen = (ImageView) rootView.findViewById(R.id.app_video_fullscreen);
+            iv_fullscreen1 = (ImageView) rootView.findViewById(R.id.app_video_fullscreen1);
             tv_steam = (TextView) rootView.findViewById(R.id.app_video_stream);
             tv_speed = (TextView) rootView.findViewById(R.id.app_video_speed);
             seekBar = (SeekBar) rootView.findViewById(R.id.app_video_seekBar);
@@ -1002,6 +1005,7 @@ public class PlayerView {
 
     /**
      * 手动切换
+     *
      * @param url
      */
     public void startPlayUrl(String url) {
@@ -1254,7 +1258,12 @@ public class PlayerView {
     public ImageView getFullScreenView() {
         return iv_fullscreen;
     }
-
+    /**
+     * 获取全屏不旋转按钮view
+     */
+    public ImageView getFullScreen1View() {
+        return iv_fullscreen1;
+    }
     /**
      * 获取底部bar的播放view
      */
@@ -1289,7 +1298,7 @@ public class PlayerView {
      * 隐藏分辨率按钮，true隐藏，false为显示
      */
     public PlayerView hideSteam(boolean isHide) {
-         tv_steam.setVisibility(isHide ? View.GONE : View.VISIBLE);
+        tv_steam.setVisibility(isHide ? View.GONE : View.VISIBLE);
         return this;
     }
 
@@ -1317,6 +1326,13 @@ public class PlayerView {
         return this;
     }
 
+    /**
+     * 隐藏全屏按钮，true隐藏，false为显示
+     */
+    public PlayerView hideFullscreen1(boolean isHide) {
+        iv_fullscreen1.setVisibility(isHide ? View.GONE : View.VISIBLE);
+        return this;
+    }
     /**
      * 隐藏中间播放按钮,ture为隐藏，false为不做隐藏处理，但不是显示
      */
@@ -2121,6 +2137,7 @@ public class PlayerView {
             return true;
         }
     }
+
     /**
      * ==========================================内部方法=============================
      */

@@ -151,5 +151,11 @@
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:src="@drawable/simple_player_icon_fullscreen_stretch"/>
-
+    <ImageView
+        android:id="@+id/app_video_fullscreen1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:visibility="gone"
+        android:src="@drawable/simple_player_icon_fullscreen_stretch"/>
 </LinearLayout>
